@@ -30,6 +30,8 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 // Main dashboard auth needed
 Route::middleware('auth')->group(function () {
 
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -42,8 +44,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('document/index', [DocumentController::class, 'index'])->name('document.index');
     Route::get('document/search', [DocumentController::class, 'search'])->name('document.search');
 
-    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
-
+   
     //Documents Routes
     Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
     Route::get('document/create', [DocumentController::class, 'create'])->name('documents.create');
